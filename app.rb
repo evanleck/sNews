@@ -1,8 +1,5 @@
 helpers do
   include Rack::Utils
-  include Cachify
-  include Snews
-  
   alias_method :h, :escape_html
 end
 
@@ -13,22 +10,16 @@ get '/' do
 end
 
 get '/check_freshness' do
-  res = is_fresh?
-  erb "#{res}", :layout => false
+  erb "#{is_fresh?}", :layout => false
 end
 
 get '/update' do
-  @hot = get_snews
+  @hot = check
   erb :home, :layout => !request.xhr?
 end
 
 post '/record' do
-  state = params[:state]
-  save_state( state )
-end
-
-get '/source' do
-  erb :source
+  save_state( params[:state] ) # TODO: make this less dangerous
 end
 
 # 404 error
