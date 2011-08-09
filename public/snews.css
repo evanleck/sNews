@@ -1,0 +1,63 @@
+body { color: #333; font-family: arial, sans-serif; background: #efefef; margin: 0; padding: 0; }
+h1.title { font-size: 128px; line-height: 1em; margin: 0 0 7px; letter-spacing: -5px; position: relative; left: -23px; }
+h1.title sup { color: #555; font-size: 64px; }
+h3.sub { margin: 0; position: relative; top: -15px; left: 50px; }
+h3.sub a { color: #555; }
+h3.sub span { color: #bbb; }
+h3.sub strong { color: #999; }
+#wrapper h1 { font-size: 35px; color: #000; position: relative; left: -50px; }
+#wrapper h1 span { padding: 7px 25px 7px 50px; }
+ol { margin: 0; padding: 0; list-style: none; }
+ol > li { font-size: 35px; border-bottom: 3px dashed #777; }
+.name { background: #efefef; }
+.name a { text-decoration: none; }
+.tehot { clear: both; padding: 35px 0; }
+.tehot:first-child { border-top: none; }
+.flicks { list-style: none; margin: 0; padding: 0; display: inline-block; }
+.flicks li { float: left; margin-right: 10px; }
+.volcanic { background: red; }
+.spicy { background: yellow; }
+.onfire { background: orange; }
+.desc { font-size: 13px; margin-bottom: 10px; }
+.gs-title { margin-top: 10px; }
+
+#container {
+	background: #fff;
+	background: rgba(255,255,255,0.9);
+	border: 1px dotted #bbb;
+	margin: 15px auto 0;
+	overflow: hidden;
+	padding: 25px 50px;
+	position: relative;
+	width: 650px;
+	
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-o-border-radius: 7px;
+	-ms-border-radius: 7px;
+	border-radius: 7px;
+}
+#footer {
+	margin: 10px auto 35px;
+	padding: 0 65px;
+	color: #333;
+	font-size: 10px;
+	width: 650px;
+}
+#footer p { margin: 0 0 5px; }
+
+#notifications {
+	display: none;
+	position: absolute;
+	right: 25px;
+	top: 15px;
+	width: auto;
+	background: yellow;
+	padding: 7px 15px;
+	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	border-radius: 3px;
+}
