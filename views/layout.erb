@@ -2,8 +2,6 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
 		<title>sNews</title>
 		<link href="/snews.css" media="screen" rel="stylesheet" type="text/css" charset="utf-8">
 	<% if @code %>
@@ -14,22 +12,18 @@
 	<body>
 		<div id="container">
 			<div id="notifications">&nbsp;</div>
-			
 			<h1 class="title">sNews<sup>2.1</sup></h1>
 			<h3 class="sub"><a href="/source">Source</a> <a href="/">Home</a> <span>by <strong>Thomas Evan Lecklider</strong></span></h3>
 			
 			<%= yield %>
 		</div>
+		
 		<div id="footer">
 			<p>Created by <a href="http://lecklider.com">Thomas Evan Lecklider</a>. Based on <a href="http://dev.lecklider.com/snews/">my original work</a>. Built using <a href="http://ruby-lang.org">Ruby</a>, <a href="http://sinatrarb.com">Sinatra</a> and <a href="http://wiki.github.com/hpricot/hpricot/">Hpricot</a>.</p>
 			<p>Information pulled from <a href="http://google.com/trends">Google Trends</a> and subject to whatever legal mumbo-jumbo they might care for. Images via <a href="http://flickr">the Flickr API</a>.</p>
 		</div>
 		
-		<% unless @code %>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-		<script src="/snews.js"></script>
-		<% end %>
-		<% if @code %>
+	<% if @code %>
 		<script src="/sh/shCore.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/sh/shAutoloader.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
@@ -40,6 +34,9 @@
 			
 			SyntaxHighlighter.all();
 		</script>
-		<% end %>
+	<% else %>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="/snews.js"></script>
+	<% end %>
 	</body>
 </html>

@@ -1,40 +1,32 @@
-require 'ftools'
-require 'pathname'
 # ===========
 # = Cachify =
 # ===========
-class Cachify
-=begin  
-
-  TODO Save current state to file and load if still valid
-  if not valid
-    render last valid & notice "loading latest"
-    load latest
-    render latest
-  else
-    render valid cache file
-  end
-  
-=end
-  
-  def self.recent
+module Cachify
+  def recent
     recent = ""
     
     Dir.chdir("cache") do
-      Dir.chdir( Dir.glob("*").sort.last ) do # jump into the most recent date folder
-        recent = File.read( Dir.glob("*").sort.last ) # return the most recent file contents
+      if Dir.glob("*").sort.last
+        Dir.chdir( Dir.glob("*").sort.last ) do # jump into the most recent date folder
+          if Dir.glob("*").sort.last
+            recent = File.read( Dir.glob("*").sort.last ) # return the most recent file contents
+          else
+            recent = ''
+          end
+        end
+      else
+        recent = ''
       end
     end
     
     recent
   end
   
-  def self.is_fresh
-    # is now is within 15 minutes of state return state
-    
-    fresh = false
-    t = Time.now
-    folder = t.strftime("%Y%m%d")
+  def is_fresh?
+    # is now is within 15 minutes of state return state    
+    fresh     = false
+    t         = Time.now
+    folder    = t.strftime("%Y%m%d")
     file_name = t.strftime("%H%M")
     time_diff = 15
     
@@ -63,30 +55,17 @@ class Cachify
     fresh
   end
   
-  def self.save_state( snapshot )
-    t = Time.now
-    folder = t.strftime("%Y%m%d")
+  def save_state( snapshot )
+    t         = Time.now
+    folder    = t.strftime("%Y%m%d")
     file_name = t.strftime("%H%M")
     
     unless File.directory?("cache/#{folder}")
-      File.makedirs "cache/#{folder}"
+      Dir.mkdir "cache/#{folder}"
     end
 
-    File.open( Pathname.new( "cache/#{folder}/#{file_name}" ), "w+") do |file|
+    File.open( "cache/#{folder}/#{file_name}", "w+") do |file|
       file.puts snapshot
     end
-    
   end
-
-=begin  
-  def self.load_state( snapshot )
-    begin
-      File.read( snapshot )
-    rescue Exception => e
-      # log it
-      # no cache so load it fresh
-    end
-    # return state info or nothing
-  end
-=end
 end
