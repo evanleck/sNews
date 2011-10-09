@@ -1,7 +1,9 @@
 #\ -s thin -p 4567
 # sets `rackup` to use the thin web server on port 4567
+require 'bundler'               # gem requires
+Bundler.require(:default, ENV['RACK_ENV'].to_sym)  # only loads environment specific gems
 
-%w(sinatra hpricot open-uri ./lib/cachify ./lib/snews ./app).each do |requirement|
+%w(open-uri ./lib/cachify ./lib/snews ./app).each do |requirement|
   require requirement
 end
 

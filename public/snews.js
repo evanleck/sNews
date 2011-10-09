@@ -1,4 +1,4 @@
-$(function(){
+jQuery(function($){
 	
 	function notify( message ) {
 		$("#notifications").html( message );
@@ -19,7 +19,7 @@ $(function(){
 			$("#notifications").show();
 			$("#wrapper").load('/update #frag', function(){
 				
-				notify("Stories loaded, loading images...")
+				notify("Stories loaded, loading images...");
 				var size = $(".tehot").length - 1;
 				
 				$(".tehot").each(function(index) {
