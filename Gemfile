@@ -8,6 +8,7 @@ source :rubygems
 gem "rack"
 gem "sinatra"
 gem "hpricot"
+gem "thin"
 
 # = Development =
 group :development do
